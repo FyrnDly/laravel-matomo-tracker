@@ -1,0 +1,32 @@
+{
+    "name": "fyrndly/laravel-matomo-tracker",
+    "description": "A seamless Matomo Analytics integration for Laravel app tracking.",
+    "license": "MIT",
+    "keywords": ["laravel", "matomo", "analytics", "tracking"],
+    "authors": [
+        {
+            "name": "FyrnDly",
+            "homepage": "https://github.com/FyrnDly"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^8.0",
+        "matomo/matomo-php-tracker": "^3.4",
+        "illuminate/support": "^8.0|^9.0|^10.0|^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "FyrnDly\\Matomo\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "FyrnDly\\Matomo\\MatomoServiceProvider"
+            ],
+            "aliases": {
+                "Matomo": "FyrnDly\\Matomo\\Facades\\Matomo"
+            }
+        }
+    }
+}
