@@ -92,10 +92,22 @@ class MatomoService
 
     /**
      * Track a custom event.
+     * * If $payload is an array or object, it will be automatically 
+     * encoded to JSON and Base64.
+     *
+     * @param string $category
+     * @param string $action
+     * @param mixed $payload
+     * @param float $value
+     * @return mixed
      */
-    public function event(string $category, string $action, string $name = '', float $value = 0)
+    public function event(string $category, string $action, $payload = '', float $value = 0)
     {
-        return $this->tracker->doTrackEvent($category, $action, $name, $value);
+        if (is_array($payload) || is_object($payload)) {
+            $payload = base64_encode(json_encode($payload));
+        }
+
+        return $this->tracker->doTrackEvent($category, $action, $payload, $value);
     }
 
     /**
