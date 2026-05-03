@@ -23,4 +23,10 @@ return [
      * Default is 'email'. You can change this to 'id', 'username', etc.
      */
     'user_id_attribute' => env('MATOMO_USER_ID_ATTRIBUTE', 'email'),
+
+    /*
+     * If enabled, tracking requests will be dispatched to the Laravel Queue.
+     * This is highly recommended for high-traffic applications.
+     */
+    'queue' => env('MATOMO_QUEUE', false),
 ];
