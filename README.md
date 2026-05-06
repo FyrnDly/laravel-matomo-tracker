@@ -79,6 +79,22 @@ $data = [
 Matomo::event('Onboarding', 'StepCompleted', $data);
 ```
 
+### Livewire & Filament Auto-Tracking
+You can effortlessly track page views in your Livewire components or Filament pages by simply including the `MatomoTrackView` trait. It hooks into the component's lifecycle and automatically resolves the page title.
+
+```php
+use Livewire\Component;
+use FyrnDly\Matomo\Traits\MatomoTrackView;
+
+class Dashboard extends Component
+{
+    use MatomoTrackView;
+
+    public $pageTitle = 'Main Dashboard'; // Automatically tracked as "Go to page Main Dashboard"
+}
+```
+>Note: This trait smartly looks for $pageTitle, $title, $heading properties, or getTitle(), getHeading(), getRecordTitle() methods (perfect for Filament v3).
+
 ### High Traffic Handling (Queue)
 For high-traffic applications, it is highly recommended to enable the queue to prevent API latency from affecting the user experience.
 1. Set `MATOMO_QUEUE=true` in your `.env`.
